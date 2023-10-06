@@ -1,0 +1,36 @@
+import java.io.*;
+
+class Main{
+  public static void main(String args[])
+      throws IOException
+    {
+      int arr[]={-1, 2, -3};
+      // iterating over array
+      for(int i = 0; i < arr.length; ++i){
+	  arr[i] = Math.abs(arr[i]); // replacing elements with their absolute values
+	  System.out.print(arr[i] + " ");
+      }
+      
+      System.out.print("\n");
+
+      // Creating BufferedReader Object
+      // InputStreamReader converts bytes to
+      // stream of character
+      BufferedReader bfn = new BufferedReader(
+					      new InputStreamReader(System.in));
+      
+      // String reading internally
+      String str = bfn.readLine();
+      
+      // Integer reading internally
+      int it = Integer.parseInt(bfn.readLine());
+      
+      // Printing String
+      System.out.println("Entered String : " + str);
+      
+      // Printing Integer
+      System.out.println("Entered Integer : " + it);
+
+  }
+}
+
