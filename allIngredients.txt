@@ -1,2 +1,3 @@
-milk 2.85 gallon cup
-flour 0.80 lb cup
+milk 2.85 gallon cup 16
+flour 0.80 lb cup 3.764705882
+egg 5 dozen each 12

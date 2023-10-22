@@ -102,16 +102,16 @@ class Main{
         printAllFiles("/home/noah/dev/cost-calculator/recipes/");
         break;
       case "calc":
-        calcRecipe(fileName);
+        System.out.println(calcRecipe(fileName));
+        break;
+      case "find":
+        text = bfn.readLine();
+        System.out.println(searchFile(fileName, text));
         break;
       default:
         System.out.println("unknown command: " + command);
     }
-  
-  
-    text = readFile("../allIngredients.txt", 0);
-    arrofStr = text.split(" ", -1);
-    //new Ingredient(arrofStr[0], Double.parseDouble(arrofStr[1]), arrofStr[2], arrofStr[3]);
+
     
   }
 
@@ -120,22 +120,57 @@ class Main{
 
 /*********************************************************************************************/
 
-  public static int calcRecipe(String fileName) {
-    int price = 0;
+  public static double calcRecipe(String fileName) throws IOException{
+    double totalPrice = 0;
     Path path = Paths.get("/home/noah/dev/cost-calculator/recipes/" + fileName);
     long numOfLines = 0;
-      
+    double ingPrice = 0;
+
     try {
       numOfLines = Files.lines(path).count();
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
+
+
     for(int i=0; i<numOfLines ; i++) {
       String text = readFile(fileName, i);
-      String[] arrofStr = text.split(" ", -1);
+      String[] arrofRec = text.split(" ", -1);
+      String allIngredient = searchFile("../allIngredients.txt", arrofRec[0]);
+      String[] arrOfIngredient = allIngredient.split(" ", -1);
+      ingPrice = (Double.parseDouble(arrOfIngredient[1]) / Double.parseDouble(arrOfIngredient[4])) * Double.parseDouble(arrofRec[1]); 
+      System.out.println(ingPrice);
+      totalPrice += ingPrice;
     }
-    return price;
+    return totalPrice;
+  }
+
+  public static String searchFile(String fileName, String inputSearch) throws IOException {
+    BufferedReader bfn = new BufferedReader(new FileReader("/home/noah/dev/cost-calculator/recipes/" + fileName));
+    String line;
+    int countLine = -1;
+    boolean done = false;
+    String paddedInput = " " + inputSearch + " ";
+    String paddedInputStart = inputSearch + " ";
+    String paddedInputEnd = " " +inputSearch ;
+
+    while((line = bfn.readLine()) != null) {
+      countLine++;
+
+      if(line.equals(inputSearch) ||
+        line.startsWith(paddedInputStart) ||
+        line.endsWith(paddedInputEnd) ||
+        line.contains(paddedInput)) {
+        done = true;
+        break;
+      }
+    }
+    bfn.close();
+    if(done) {
+      return readFile(fileName, countLine);
+    } else {
+      return "done";
+    }
   }
 
   public static int findIngredient(Ingredient[] ingredients, String name){

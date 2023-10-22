@@ -1,2 +1,3 @@
 flour 4
 milk 2
+egg 4
