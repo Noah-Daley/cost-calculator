@@ -30,8 +30,6 @@ class Recipe {
         System.out.println("Name: " + name);
         System.out.println("Ingredients:");
         for(int i=0; i < 1/*ingredients.size()*/; i++) {
-            System.out.println("hi");
-            ingredients.get(i).printMe();
             
         }
     }

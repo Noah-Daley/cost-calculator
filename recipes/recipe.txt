@@ -1,0 +1,2 @@
+flour 4
+milk 2
