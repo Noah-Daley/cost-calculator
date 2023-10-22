@@ -108,11 +108,15 @@ class Main{
         text = bfn.readLine();
         System.out.println(searchFile(fileName, text));
         break;
+      case "add":
+        text = bfn.readLine();
+        
+        break;
       default:
         System.out.println("unknown command: " + command);
     }
 
-    
+
   }
 
 
