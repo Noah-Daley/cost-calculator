@@ -1,15 +1,7 @@
 import java.io.*;
+import java.util.Scanner;
 
 class Main{
-  
-  
-  public static int addTwoNumbers(int x, int y){
-    return x + y;
-  }
-  
-  public int addThreeNumbers(int x, int y){
-    return x + y;
-  }
   
   public static int findIngredient(Ingredient[] ingredients, String name){
     for(int i=0;i<ingredients.length; i++){
@@ -35,21 +27,13 @@ class Main{
       allIngredients[index].printMe();
     }
 
-
-  
-    
-    System.out.println(addTwoNumbers(4,5));
-    Main test = new Main();
-    System.out.println(test.addThreeNumbers(8,5));
-    
-    System.out.print("\n");
-    
-    
-    // Creating BufferedReader Object
-    // InputStreamReader converts bytes to
-    // stream of character
     BufferedReader bfn = new BufferedReader(new InputStreamReader(System.in));
-    
+    File f = new File("/home/noah/dev/cost-calculator/files");
+    if (f.mkdir() == true) {
+      System.out.println("done");
+    } else {
+      System.out.println("faill");
+    }
     System.out.println("Enter the name of a new recipe:");
     String name = bfn.readLine();
     Recipe rec = new Recipe(name);
@@ -67,16 +51,62 @@ class Main{
 
     rec.printMe();
 
-    /*      
-    // Integer reading internally
-    int it = Integer.parseInt(bfn.readLine());
     
-    // Printing String
-    System.out.println("Entered String : " + str);
-    
-    // Printing Integer
-    System.out.println("Entered Integer : " + it);
-    */
   }
+
+
+  public void writeFile(String text, String fileName) {
+    File file = new File("/home/noah/dev/w3schools_tutorial/src/files/" + fileName);
+    try {
+      FileWriter myWriter = new FileWriter(file, true);
+      myWriter.write("\n" + text);
+      myWriter.close();
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }     
+  }
+  
+  public void readFile(String fileName) {
+    File file = new File("/home/noah/dev/w3schools_tutorial/src/files/" + fileName);
+    try {
+      Scanner myReader = new Scanner(file);
+      while (myReader.hasNextLine()) {
+        String data = myReader.nextLine();
+        System.out.println(data);
+      }
+      myReader.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    } 
+  }
+
+  public void printFileInfo(String fileName) {
+    File file = new File("/home/noah/dev/w3schools_tutorial/src/files/" + fileName);
+    if (file.exists()) {
+      System.out.println("File name: " + file.getName());
+      System.out.println("Absolute path: " + file.getAbsolutePath());
+      System.out.println("Writeable: " + file.canWrite());
+      System.out.println("Readable: " + file.canRead());
+      System.out.println("File size in bytes " + file.length());
+    } else {
+      System.out.println("The file does not exist.");
+    }
+  }
+
+  public void printAllFiles(String folderPath) {
+    File[] listOfFiles = new File(folderPath).listFiles();
+    
+    System.out.println("All files in " + folderPath + ":");
+    for (File file : listOfFiles) {
+      if(file.isFile()) {
+      System.out.println(file.getName());
+      }
+    }
+  }
+
+
 }
 
