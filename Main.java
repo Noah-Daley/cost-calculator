@@ -55,7 +55,7 @@ class Main{
     while(true) {
       System.out.print("~>");
       text = bfn.readLine();
-      if(text.equals("e") || text.equals("x")) {
+      if(text.equals("e") || text.equals("x") || text.equals("exit")) {
         break;
       }
 
@@ -116,6 +116,19 @@ class Main{
           text = bfn.readLine();
           System.out.println(convertToGrams(text));
           break;
+        case "help":
+          System.out.println(
+              " new <recipe-name>: new recipe \n" +
+              " read <recipe-name>: read recipe \n" +
+              " rm <recipe-name>: remove recipe\n" +
+              " info <recipe-name>: get file stats\n" +
+              " write \\n <name quantity unit>: add ingredient to recipe\n" +
+              " ls: list all recipes\n" +
+              " calc <recipe-name>: calculate recipe cost\n" +
+              " find <file-name> \\n <text-for-search>: find a line in file\n" +
+              " con \\n <ingredient-name quantity unit>: convert to grams\n" +
+              " help: show command list\n");
+          break;
         default:
           System.out.println("unknown command: " + command);
       }
@@ -158,19 +171,14 @@ class Main{
     long numOfLines = 0;
     double ingPrice = 0;
     
-    try {
-      numOfLines = Files.lines(path).count();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    
+    numOfLines = Files.lines(path).count();
     
     for(int i=0; i<numOfLines ; i++) {
       String text = readFile(fileName, i);
       String[] arrofRec = text.split(" ", -1);
       String allIngredient = searchFile("../allIngredients.txt", arrofRec[0]);
       String[] arrOfIngredient = allIngredient.split(" ", -1);
-      ingPrice = (Double.parseDouble(arrOfIngredient[1]) / Double.parseDouble(arrOfIngredient[4])) * Double.parseDouble(arrofRec[1]); 
+      ingPrice = Double.parseDouble(arrOfIngredient[1]) * Double.parseDouble(arrofRec[1]); 
       //System.out.println(ingPrice);
       totalPrice += ingPrice;
     }

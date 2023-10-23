@@ -1,3 +1,3 @@
-flour 4
-milk 2
-egg 4
+flour 480.0
+milk 480.0
+egg 319.0
