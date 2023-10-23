@@ -6,43 +6,9 @@ import java.nio.file.Paths;
 
 class Main{
   
-  /*
-  static Ingredient[] allIngredients = {
-    new Ingredient(arrofStr[0], Double.parseDouble(arrofStr[1]), arrofStr[2], arrofStr[3]),
-    new Ingredient("flour", 0.80, "lb", "cup"),
-    
-  };
-  */
   public static void main(String args[])
   throws IOException
   {
-    
-    
-    /*
-    int index = Main.findIngredient(allIngredients, "flour");
-    if(index != -1){
-      allIngredients[index].printMe();
-    }
-    
-    BufferedReader bfn = new BufferedReader(new InputStreamReader(System.in));
-    
-    System.out.println("Enter the name of a new recipe:");
-    String name = bfn.readLine();
-    Recipe rec = new Recipe(name);
-    
-    for(int i=0;i<allIngredients.length; i++){
-      System.out.println(allIngredients[i].name);
-    }
-    
-    System.out.println("Enter the name of the first ingredient:");
-    String str = bfn.readLine();
-    System.out.println("Enter the quantity of " + str);
-    double quantity = Float.parseFloat(bfn.readLine());
-    
-    rec.addIngredient(str, quantity);
-    
-    //rec.printMe();
-    */
     
     String text;
     String command;
@@ -212,14 +178,6 @@ class Main{
       System.out.println("!!!searchFile: could not find: " + inputSearch + "!!!");
       return "fail";
     }
-  }
-  
-  public static int findIngredient(Ingredient[] ingredients, String name){
-    for(int i=0;i<ingredients.length; i++){
-      if(ingredients[i].name == name)
-      return i;
-    }
-    return -1;
   }
   
   public static void writeFile(String text, String fileName) {
