@@ -17,14 +17,14 @@ class Recipe {
     }   
 
     public void addIngredient(String ing, Double quant) {
-        int index = Main.findIngredient(Main.allIngredients, ing);
-        if(index != -1){
-        ingredients.add(Main.allIngredients[0]);//index]);
+        //int index = Main.findIngredient(Main.allIngredients, ing);
+        //if(index != -1){
+        //ingredients.add(Main.allIngredients[0]);//index]);
         System.out.println();
     }
         
     
-    }
+    
 
     public void printMe() {
         System.out.println("Name: " + name);
@@ -33,4 +33,5 @@ class Recipe {
             
         }
     }
+
 }
