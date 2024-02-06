@@ -1,3 +1,4 @@
-milk 2.85 gallon t 5 0.0007421875
-flour 0.80 lb t 2.5
-egg 5 dozen each 63.8
+<name> <price per gram> <smallest volume unit> <grams per smallest unti> <cost unit> <price per cost unit>
+milk 0.0007421875 t 5 gallon 2.85
+flour 0.00176369798083 t 2.5 lb 0.80
+egg 0.008333333333333 each 50 dozen 5

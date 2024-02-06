@@ -108,7 +108,7 @@ class Main{
   
   /******************************************************************************************************************/
   
-  public static double convertToGrams(String text) throws IOException { //e.g. input: "flour 4 cups" and output: "480"
+  public static double convertToGrams(String text) throws IOException { //e.g. input: "flour 4 c" and output: "480"
     String[] arrofStr = text.split(" ", 3);
     String name = arrofStr[0];
     double num = Integer.parseInt(arrofStr[1]);
@@ -122,7 +122,7 @@ class Main{
     String ingredient = searchFile("../allIngredients.txt", name); //search for ingredient, returns: e.g. flour 0.80 lb t 2.5
     arrofStr = ingredient.split(" ", -1);
     
-    if(unit.equals(arrofStr[3])) {output = num * Double.parseDouble(arrofStr[4]); //if ing-unit = unit: multiply by ing-grams
+    if(unit.equals(arrofStr[2])) {output = num * Double.parseDouble(arrofStr[3]); //if ing-unit = unit: multiply by ing-grams
     } else {
       System.out.println("Could not parse: " + unit);
     }

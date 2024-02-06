@@ -2,3 +2,7 @@ flour 480.0
 milk 480.0
 egg 319.0
 flour 480.0
+milk 480.0
+milk 720.0
+flour 120.0
+flour 75.0
